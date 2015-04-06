@@ -1,7 +1,5 @@
 <?php
 
-var_dump($_POST);
-
 $tlpath = "/home/web/html/cah-gen";
 
 $card_color = 'white';
@@ -11,10 +9,7 @@ $mechanic = '';
 $card_text = explode("\n", $_POST['card-text']);
 $card_count = count($card_text);
 $batch = escapeshellcmd($_POST['batch-id']);
-$path = "$tlpath/$batch";
-
-print $_POST['card-color'];
-print $_POST['icon'];
+$path = "$tlpath/files/$batch";
 
 if ($_POST['card-color'] == 'black') {
 	$card_color = 'black';
