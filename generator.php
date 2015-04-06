@@ -44,6 +44,12 @@ switch ($_POST['icon']) {
 	case "hat":
 		$icon = 'hat-';
 		break;
+  case "retail":
+		$icon = 'retail-';
+		break;
+	case "tabletop":
+		$icon = 'tabletop-';
+		break;
 }
 
 switch ($_POST['mechanic']) {
