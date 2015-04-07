@@ -46,7 +46,7 @@ elseif ($_POST['card-color'] == 'white') {
    $mechanic = '';
 }
 else {
-   die ("Unknown card-color: $_POST['card-color']");
+   die ("Unknown card-color: " . $_POST['card-color']);
 }
 
 switch ($_POST['icon']) {
