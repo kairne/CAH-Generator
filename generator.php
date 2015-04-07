@@ -1,6 +1,30 @@
 <?php
 
+// If this script doesn't seem to work:
+// 1) ensure you have changed $tlpath
+// 2) ensure file permissions are OK. The web server user (www-data on ubuntu) must be able to create directories and files
+//    in $tlpath/files, access files in the img directory and create files in the top level directory.
+// 3) ensure you have imagemagick, perl and zip installed. 
+
+// Change the following to point to the CAH-Generator top level directory.
 $tlpath = "/home/web/html/cah-gen";
+
+// ------------------------------
+
+// Sanity check the POST content.
+if (empty($_POST['card-text'])) {
+  die("Error: Provide at least one card.");
+}
+if (empty($_POST['batch-id'])) {
+  die("Error: No batch-id provided.");
+}
+if (empty($_POST['card-color'])) {
+  die("Error: No card color selected.");
+}
+if (empty($_POST['icon'])) {
+   die("Error: No card set selected.")
+}
+// $_POST['mechanic'] is optional.
 
 $card_color = 'white';
 $fill = 'black';
