@@ -40,7 +40,7 @@ if ($_POST['card-color'] == 'black') {
 	$card_color = 'black';
    $fill = 'white';
 }
-else ($_POST['card-color'] == 'white') {
+elseif ($_POST['card-color'] == 'white') {
    $card_color = 'white';
    $fill = 'black';
    $mechanic = '';
