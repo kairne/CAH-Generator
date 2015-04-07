@@ -13,21 +13,21 @@ $tlpath = "/home/web/html/cah-gen";
 
 // Sanity check the POST content.
 if (empty($_POST['card-text'])) {
-  die("Error: Provide at least one card.");
+   die("Error: Provide at least one card.");
 }
 if (empty($_POST['batch-id'])) {
-  die("Error: No batch-id provided.");
+   die("Error: No batch-id provided.");
 }
 if (empty($_POST['card-color'])) {
-  die("Error: No card color selected.");
+   die("Error: No card color selected.");
 }
 if (empty($_POST['icon'])) {
-   die("Error: No card set selected.")
+   die("Error: No card set selected.");
 }
 // $_POST['mechanic'] is optional.
 
-$card_color = 'white';
-$fill = 'black';
+$card_color = '';
+$fill = '';
 $icon = '';
 $mechanic = '';
 $card_text = explode("\n", $_POST['card-text']);
@@ -35,9 +35,18 @@ $card_count = count($card_text);
 $batch = escapeshellcmd($_POST['batch-id']);
 $path = "$tlpath/files/$batch";
 
+// Valid card colors: black and white.
 if ($_POST['card-color'] == 'black') {
 	$card_color = 'black';
-	$fill = 'white';
+   $fill = 'white';
+}
+else ($_POST['card-color'] == 'white') {
+   $card_color = 'white';
+   $fill = 'black';
+   $mechanic = '';
+}
+else {
+   die ("Unknown card-color: $_POST['card-color']");
 }
 
 switch ($_POST['icon']) {
@@ -68,12 +77,27 @@ switch ($_POST['icon']) {
 	case "hat":
 		$icon = 'hat-';
 		break;
-  case "retail":
+   case "retail":
 		$icon = 'retail-';
 		break;
 	case "tabletop":
 		$icon = 'tabletop-';
 		break;
+   case "safe":
+		$icon = 'safe-';
+		break;
+	case "sloth":
+		$icon = 'sloth-';
+		break;
+   case "paxeast2013A":
+      $icon = 'paxeast2013A-';
+      break;
+   case "paxeast2013B":
+      $icon = 'paxeast2013B-';
+      break;
+   case "paxeast2013C":
+      $icon = 'paxeast2013C-';
+      break;
 }
 
 switch ($_POST['mechanic']) {
